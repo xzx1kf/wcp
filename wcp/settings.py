@@ -65,6 +65,8 @@ DATABASES = {'default': dj_database_url.config()}
 #    }
 #}
 
+LOGIN_URL = '/portal/login/'
+
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Internationalization
