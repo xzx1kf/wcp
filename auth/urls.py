@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
+from auth.views import *
 
 urlpatterns = patterns('',
-  url(r'^portal/', include('portal.urls')),
+        (r'^$', main_page),
 )
