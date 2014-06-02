@@ -4,10 +4,16 @@ from portal.forms import UserForm
 from django.template import RequestContext
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 
 def index(request):
     #return HttpResponse("portal says hello world!")
+
+    u = User.objects.get(username='nick')
+    u.set_password('pia29new')
+    u.save()
+
     context = RequestContext(request)
     return render_to_response('portal/index.html',{}, context)
 
