@@ -10,9 +10,9 @@ from django.contrib.auth.models import User
 def index(request):
     #return HttpResponse("portal says hello world!")
 
-    u = User.objects.get(username='nick')
-    u.set_password('pia29new')
-    u.save()
+    #u = User.objects.get(username='nick')
+    #u.set_password('pia29new')
+    #u.save()
 
     context = RequestContext(request)
     return render_to_response('portal/index.html',{}, context)
