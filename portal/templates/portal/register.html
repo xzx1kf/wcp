@@ -13,14 +13,10 @@
         {% else %}
         WCP says: <strong>register here!</strong><br />
 
-        <form id="user_form" method="post" action="/portal/register/"
-            enctype="multipart/form-data">
-
+        <form method="post" action="">
             {% csrf_token %}
-
-            {{ user_form.as_p }}
-
-            <input type="submit" name="submit" value="Register" />
+            {{ form.as_p }}
+            <input type="submit" value="Register" />
         </form>
         {% endif %}
     </body>

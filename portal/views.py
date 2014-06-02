@@ -1,10 +1,11 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, render
 from django.http import HttpResponse, HttpResponseRedirect
 from portal.forms import UserForm
 from django.template import RequestContext
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 
 
 def index(request):
@@ -18,6 +19,18 @@ def index(request):
     return render_to_response('portal/index.html',{}, context)
 
 def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            new_user = form.save()
+            return HttpResponseRedirect("/portal/")
+    else:
+        form = UserCreationForm()
+        context = {'form': form}
+
+        return render(request, "portal/register.html", context)
+
+def register_old(request):
     context = RequestContext(request)
 
     registered = False
